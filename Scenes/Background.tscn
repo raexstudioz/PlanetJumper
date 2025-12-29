@@ -12,10 +12,34 @@ BG3 = NodePath("Background3")
 [node name="Background1" type="Sprite2D" parent="."]
 texture = ExtResource("1_73avt")
 
+[node name="Background4" type="Sprite2D" parent="Background1"]
+position = Vector2(1075, 0)
+texture = ExtResource("1_73avt")
+
+[node name="Background5" type="Sprite2D" parent="Background1"]
+position = Vector2(-1081, 0)
+texture = ExtResource("1_73avt")
+
 [node name="Background2" type="Sprite2D" parent="."]
 position = Vector2(0, -5000)
 texture = ExtResource("1_73avt")
 
+[node name="Background4" type="Sprite2D" parent="Background2"]
+position = Vector2(1078, 0)
+texture = ExtResource("1_73avt")
+
+[node name="Background5" type="Sprite2D" parent="Background2"]
+position = Vector2(-1075, 0)
+texture = ExtResource("1_73avt")
+
 [node name="Background3" type="Sprite2D" parent="."]
 position = Vector2(0, -10000)
+texture = ExtResource("1_73avt")
+
+[node name="Background4" type="Sprite2D" parent="Background3"]
+position = Vector2(1067, 0)
+texture = ExtResource("1_73avt")
+
+[node name="Background5" type="Sprite2D" parent="Background3"]
+position = Vector2(-1082, 4)
 texture = ExtResource("1_73avt")
