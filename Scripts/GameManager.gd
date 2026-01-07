@@ -2,6 +2,7 @@ extends Node2D
 
 @export var falling_object_scene : PackedScene 
 @export var timer : Timer
+@export var GameOverScreen : Control
 var gap_percentage = 10
 
 var planet_count = 0
@@ -120,7 +121,8 @@ func onPause():
 func GameOver():
 	print("Game Over!!")
 	game_is_over = true
-	$GameOverScreen.visible = true
+	GameOverScreen.visible = true
+	pause_game()
 	GameIsOver.emit()
 	
 func RestartGame():

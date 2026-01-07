@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bdmppjpfodq7j"]
+[gd_scene load_steps=40 format=3 uid="uid://bdmppjpfodq7j"]
 
 [ext_resource type="PackedScene" uid="uid://btmmhcglgp64n" path="res://Scenes/Planet1.tscn" id="1_tx5vb"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_vpq13"]
@@ -38,29 +38,17 @@
 [ext_resource type="Texture2D" uid="uid://d1kxq45e0cyq7" path="res://Images/Electric Wall.png" id="22_otyj5"]
 [ext_resource type="Script" path="res://Scripts/SoundManager.gd" id="31_h8i3w"]
 [ext_resource type="AudioStream" uid="uid://komkgwmhu0rv" path="res://Sounds/769916__mellotrix9898__bling.wav" id="32_g143s"]
-[ext_resource type="Texture2D" uid="uid://bp2rr084dcvf1" path="res://Images/Electric Border.jpg" id="39_xy460"]
 
 [sub_resource type="FontVariation" id="FontVariation_vwjje"]
 base_font = ExtResource("12_rhdys")
 variation_embolden = 1.36
 
-[sub_resource type="Environment" id="Environment_35whx"]
-background_mode = 3
-tonemap_mode = 3
-glow_enabled = true
-glow_levels/1 = 1.0
-glow_levels/2 = 1.0
-glow_levels/4 = 1.0
-glow_levels/6 = 1.0
-glow_levels/7 = 2.0
-glow_blend_mode = 1
-glow_hdr_scale = 2.31
-
-[node name="Game" type="Node2D" node_paths=PackedStringArray("timer", "point_label")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("timer", "GameOverScreen", "point_label")]
 script = ExtResource("1_vpq13")
 falling_object_scene = ExtResource("1_tx5vb")
 timer = NodePath("Timer")
-point_label = NodePath("GameHUD/Points/RichTextLabel3")
+GameOverScreen = NodePath("Node/GameOverScreen")
+point_label = NodePath("Node/GameHUD/Points/RichTextLabel3")
 
 [node name="Background" parent="." instance=ExtResource("8_nk0yu")]
 position = Vector2(0, -1274)
@@ -74,6 +62,7 @@ position = Vector2(-849, 101)
 scale = Vector2(0.06, 0.06)
 
 [node name="DeathWall" parent="." instance=ExtResource("4_c0wpf")]
+visible = false
 position = Vector2(-538.99, -963.08)
 
 [node name="Earth" parent="." node_paths=PackedStringArray("explosion", "camera") instance=ExtResource("3_7ex4b")]
@@ -104,19 +93,21 @@ visible = false
 wait_time = 3.0
 autostart = true
 
-[node name="GameHUD" type="Control" parent="."]
+[node name="Node" type="CanvasLayer" parent="."]
+
+[node name="GameHUD" type="Control" parent="Node"]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 23.85
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Timer" type="ColorRect" parent="GameHUD"]
+[node name="Timer" type="ColorRect" parent="Node/GameHUD"]
 layout_mode = 1
 offset_left = 16.0
 offset_top = 56.0
@@ -124,7 +115,7 @@ offset_right = 368.0
 offset_bottom = 186.0
 color = Color(1, 1, 1, 0)
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="GameHUD/Timer" node_paths=PackedStringArray("FirebaseManager", "StateManager")]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameHUD/Timer" node_paths=PackedStringArray("game_manager", "FirebaseManager", "StateManager")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,10 +135,11 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "Score: 0"
 script = ExtResource("8_ngh32")
-FirebaseManager = NodePath("../../../FirebaseManager")
-StateManager = NodePath("../../../StateManager")
+game_manager = NodePath("../../../..")
+FirebaseManager = NodePath("../../../../FirebaseManager")
+StateManager = NodePath("../../../../StateManager")
 
-[node name="Points" type="ColorRect" parent="GameHUD"]
+[node name="Points" type="ColorRect" parent="Node/GameHUD"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -159,7 +151,7 @@ offset_bottom = 144.0
 grow_horizontal = 2
 color = Color(1, 1, 1, 0)
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="GameHUD/Points"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameHUD/Points"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -179,7 +171,7 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Points: 0[/center]"
 
-[node name="ActivateShieldButton" type="Button" parent="GameHUD" groups=["ui"]]
+[node name="ActivateShieldButton" type="Button" parent="Node/GameHUD" groups=["ui"]]
 layout_mode = 0
 offset_left = 873.0
 offset_top = 1583.0
@@ -188,7 +180,7 @@ offset_bottom = 1591.0
 focus_mode = 0
 text = "Activate Shield"
 
-[node name="Settings" type="Button" parent="GameHUD" groups=["ui"]]
+[node name="Settings" type="Button" parent="Node/GameHUD" groups=["ui"]]
 layout_mode = 0
 offset_left = 617.0
 offset_top = 1583.0
@@ -198,7 +190,7 @@ focus_mode = 0
 text = "Settings
 "
 
-[node name="Booster" type="Button" parent="GameHUD" groups=["ui"]]
+[node name="Booster" type="Button" parent="Node/GameHUD" groups=["ui"]]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -214,7 +206,7 @@ grow_vertical = 0
 focus_mode = 0
 text = "Booster"
 
-[node name="LaunchButton" type="TextureButton" parent="GameHUD"]
+[node name="LaunchButton" type="TextureButton" parent="Node/GameHUD"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -232,7 +224,7 @@ texture_pressed = ExtResource("11_tridr")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="GameHUD/LaunchButton"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameHUD/LaunchButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,7 +244,7 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Launch[/center]"
 
-[node name="BoosterButton" type="TextureButton" parent="GameHUD"]
+[node name="BoosterButton" type="TextureButton" parent="Node/GameHUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -266,7 +258,7 @@ texture_normal = ExtResource("13_6lili")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="ShieldButton" type="TextureButton" parent="GameHUD"]
+[node name="ShieldButton" type="TextureButton" parent="Node/GameHUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -283,7 +275,7 @@ texture_normal = ExtResource("14_hf3un")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="SettingsButton" type="TextureButton" parent="GameHUD"]
+[node name="SettingsButton" type="TextureButton" parent="Node/GameHUD"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -298,7 +290,7 @@ texture_pressed = ExtResource("16_7hlyi")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Life Container" type="HFlowContainer" parent="GameHUD" node_paths=PackedStringArray("Heart1", "Heart2", "Heart3", "GameManager")]
+[node name="Life Container" type="HFlowContainer" parent="Node/GameHUD" node_paths=PackedStringArray("Heart1", "Heart2", "Heart3", "GameManager")]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 offset_left = 59.0
@@ -309,43 +301,49 @@ script = ExtResource("17_p6hsa")
 Heart1 = NodePath("Heart")
 Heart2 = NodePath("Heart2")
 Heart3 = NodePath("Heart3")
-GameManager = NodePath("../..")
+GameManager = NodePath("../../..")
 
-[node name="Heart" type="TextureRect" parent="GameHUD/Life Container"]
+[node name="Heart" type="TextureRect" parent="Node/GameHUD/Life Container"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("17_dy0ty")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Heart2" type="TextureRect" parent="GameHUD/Life Container"]
+[node name="Heart2" type="TextureRect" parent="Node/GameHUD/Life Container"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("17_dy0ty")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Heart3" type="TextureRect" parent="GameHUD/Life Container"]
+[node name="Heart3" type="TextureRect" parent="Node/GameHUD/Life Container"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("17_dy0ty")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Electric Wall" type="TextureRect" parent="GameHUD"]
+[node name="Electric Wall" type="TextureRect" parent="Node/GameHUD"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 34.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("22_otyj5")
 expand_mode = 1
 
-[node name="PauseMenu" parent="." instance=ExtResource("11_feymk")]
+[node name="PauseMenu" parent="Node" instance=ExtResource("11_feymk")]
 visible = false
 z_index = 1
 
-[node name="GameOverScreen" type="Control" parent="."]
-visible = false
+[node name="GameOverScreen" type="Control" parent="Node"]
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -358,7 +356,7 @@ offset_bottom = 955.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="GameOverScreen"]
+[node name="Panel" type="Panel" parent="Node/GameOverScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -366,7 +364,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="GameOverScreen/Panel"]
+[node name="ColorRect" type="ColorRect" parent="Node/GameOverScreen/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -381,7 +379,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.384314, 0.384314, 0)
 
-[node name="TextureRect" type="TextureRect" parent="GameOverScreen/Panel"]
+[node name="TextureRect" type="TextureRect" parent="Node/GameOverScreen/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -394,25 +392,11 @@ offset_right = 400.0
 offset_bottom = 470.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("18_53o2v")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameOverScreen/Panel/TextureRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -54.5
-offset_top = -19.0
-offset_right = 45.5
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Game Over"
-
-[node name="Main Menu Button" type="TextureButton" parent="GameOverScreen/Panel/TextureRect"]
+[node name="Main Menu Button" type="TextureButton" parent="Node/GameOverScreen/Panel/TextureRect"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -427,7 +411,7 @@ texture_pressed = ExtResource("11_tridr")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="GameOverScreen/Panel/TextureRect/Main Menu Button"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameOverScreen/Panel/TextureRect/Main Menu Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -447,7 +431,7 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Main Menu[/center]"
 
-[node name="Restart Button" type="TextureButton" parent="GameOverScreen/Panel/TextureRect"]
+[node name="Restart Button" type="TextureButton" parent="Node/GameOverScreen/Panel/TextureRect"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -465,7 +449,7 @@ texture_pressed = ExtResource("11_tridr")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="GameOverScreen/Panel/TextureRect/Restart Button"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameOverScreen/Panel/TextureRect/Restart Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -485,27 +469,12 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Restart[/center]"
 
-[node name="Button" type="Button" parent="GameOverScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = 25.0
-offset_right = 48.0
-offset_bottom = 56.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Main Menu"
-
 [node name="ButtonManager" type="Node2D" parent="." node_paths=PackedStringArray("spaceship", "pauseMenu", "ActivateShieldButton", "SettingsButton")]
 script = ExtResource("12_3kma4")
 spaceship = NodePath("../Earth/TheSpaceship")
-pauseMenu = NodePath("../PauseMenu")
-ActivateShieldButton = NodePath("../GameHUD/ShieldButton")
-SettingsButton = NodePath("../GameHUD/SettingsButton")
+pauseMenu = NodePath("../Node/PauseMenu")
+ActivateShieldButton = NodePath("../Node/GameHUD/ShieldButton")
+SettingsButton = NodePath("../Node/GameHUD/SettingsButton")
 
 [node name="FirebaseManager" type="Node2D" parent="."]
 script = ExtResource("13_djwbg")
@@ -709,45 +678,18 @@ autostart = true
 script = ExtResource("31_h8i3w")
 Jump = ExtResource("32_g143s")
 GameManager = NodePath("..")
-PauseMenu = NodePath("../PauseMenu")
+PauseMenu = NodePath("../Node/PauseMenu")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="SoundManager"]
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="SoundManager"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_35whx")
-
-[node name="New HUD" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1080.0
-offset_bottom = 1920.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="New HUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("39_xy460")
-expand_mode = 1
-
 [connection signal="child_exiting_tree" from="Earth" to="Earth" method="on_spaceship_exit"]
 [connection signal="timeout" from="Earth/TheSpaceship/ShieldTimer" to="Earth/TheSpaceship" method="deactivate_Shield"]
-[connection signal="button_down" from="GameHUD/Booster" to="." method="UIClick"]
-[connection signal="button_up" from="GameHUD/Booster" to="." method="UIUnclick"]
-[connection signal="pressed" from="GameHUD/Booster" to="." method="Use_Boosters"]
-[connection signal="pressed" from="GameHUD/LaunchButton" to="." method="LeaveThePlanet"]
-[connection signal="pressed" from="GameHUD/BoosterButton" to="." method="Use_Boosters"]
-[connection signal="pressed" from="GameOverScreen/Panel/TextureRect/Main Menu Button" to="." method="Goto_MainMenu"]
-[connection signal="pressed" from="GameOverScreen/Panel/TextureRect/Restart Button" to="." method="RestartGame"]
-[connection signal="pressed" from="GameOverScreen/Button" to="." method="Goto_MainMenu"]
+[connection signal="button_down" from="Node/GameHUD/Booster" to="." method="UIClick"]
+[connection signal="button_up" from="Node/GameHUD/Booster" to="." method="UIUnclick"]
+[connection signal="pressed" from="Node/GameHUD/Booster" to="." method="Use_Boosters"]
+[connection signal="pressed" from="Node/GameHUD/LaunchButton" to="." method="LeaveThePlanet"]
+[connection signal="pressed" from="Node/GameHUD/BoosterButton" to="." method="Use_Boosters"]
+[connection signal="pressed" from="Node/GameOverScreen/Panel/TextureRect/Main Menu Button" to="." method="Goto_MainMenu"]
+[connection signal="pressed" from="Node/GameOverScreen/Panel/TextureRect/Restart Button" to="." method="RestartGame"]

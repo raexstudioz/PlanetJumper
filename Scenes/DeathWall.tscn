@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp6smdq8x17kg"]
+[gd_scene load_steps=16 format=3 uid="uid://dp6smdq8x17kg"]
 
 [ext_resource type="Script" path="res://Scripts/DeathBorder.gd" id="1_fmp12"]
 [ext_resource type="Texture2D" uid="uid://c4jj2f02gc7ny" path="res://Images/Flame.png" id="2_4vlqn"]
 [ext_resource type="Script" path="res://Scenes/Detect_meteor.gd" id="2_o3arh"]
+[ext_resource type="Texture2D" uid="uid://du5fcnpgfv8sx" path="res://Images/Small Button Highlighted.png" id="3_eqor1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58duh"]
 size = Vector2(1080, 70)
@@ -111,6 +112,12 @@ amount = 1000
 process_material = SubResource("ParticleProcessMaterial_tddcd")
 preprocess = 1.0
 
+[node name="TextureRect" type="TextureRect" parent="Area2D"]
+offset_right = 1083.0
+offset_bottom = 75.0
+texture = ExtResource("3_eqor1")
+expand_mode = 1
+
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2(1, 201)
 script = ExtResource("1_fmp12")
@@ -119,6 +126,13 @@ script = ExtResource("1_fmp12")
 position = Vector2(539.125, 1682)
 shape = SubResource("RectangleShape2D_58duh")
 
+[node name="TextureRect" type="TextureRect" parent="Area2D2"]
+offset_top = 1646.0
+offset_right = 1082.0
+offset_bottom = 1716.0
+texture = ExtResource("3_eqor1")
+expand_mode = 1
+
 [node name="Area2D3" type="Area2D" parent="."]
 script = ExtResource("1_fmp12")
 
@@ -126,12 +140,27 @@ script = ExtResource("1_fmp12")
 position = Vector2(26, 959.5)
 shape = SubResource("RectangleShape2D_lpjbv")
 
+[node name="TextureRect" type="TextureRect" parent="Area2D3"]
+offset_top = 75.0
+offset_right = 57.0
+offset_bottom = 1835.0
+texture = ExtResource("3_eqor1")
+expand_mode = 1
+
 [node name="Area2D4" type="Area2D" parent="."]
 script = ExtResource("1_fmp12")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
 position = Vector2(1054, 959.5)
 shape = SubResource("RectangleShape2D_lpjbv")
+
+[node name="TextureRect" type="TextureRect" parent="Area2D4"]
+offset_left = 1026.0
+offset_top = 75.0
+offset_right = 1083.0
+offset_bottom = 1847.0
+texture = ExtResource("3_eqor1")
+expand_mode = 1
 
 [node name="Detect Meteor Left" type="Area2D" parent="."]
 position = Vector2(-95, -22)

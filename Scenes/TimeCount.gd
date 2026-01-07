@@ -3,7 +3,7 @@ extends RichTextLabel
 
 # Variable to store the time elapsed
 var time_elapsed : float = 0.0
-var game_manager : Node2D
+@export var game_manager : Node2D
 var Difficulty1 = false
 var Difficulty2 = false
 var Difficulty3 = false
@@ -20,7 +20,7 @@ func _ready():
 	time_elapsed = 0.0
 	# Set the initial text of the label to "Time elapsed: 0"
 	text = "Score: 0"
-	game_manager = get_node("../../../")
+	#game_manager = get_node("../../../")
 	game_manager.connect("GameIsOver", AddHighScore)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

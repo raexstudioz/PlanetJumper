@@ -1,19 +1,24 @@
-[gd_scene load_steps=26 format=3 uid="uid://btpmrtqurv82x"]
+[gd_scene load_steps=31 format=3 uid="uid://btpmrtqurv82x"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_pa3dl"]
+[ext_resource type="Texture2D" uid="uid://gw8visgetpmp" path="res://Images/Main Menu Background New.png" id="2_571sl"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="2_exrl1"]
-[ext_resource type="Texture2D" uid="uid://dfkjdnvqqbs6j" path="res://Images/Main Menu Background Teal Color.png" id="2_lpnd8"]
-[ext_resource type="Texture2D" uid="uid://igpg4mni31vx" path="res://Images/New Game Button (1).png" id="3_7xcpu"]
 [ext_resource type="FontFile" uid="uid://xmpx3ananbw8" path="res://Fonts/Meteoric-light.otf" id="4_5e6j0"]
-[ext_resource type="Texture2D" uid="uid://32nnnpukb4bv" path="res://Images/Glow Button.png" id="4_yf0eu"]
+[ext_resource type="Texture2D" uid="uid://b582rmcypoml0" path="res://Images/Play Button New.png" id="5_n201s"]
+[ext_resource type="Texture2D" uid="uid://dc2bmeiou010r" path="res://Images/Play Button New Pressed.png" id="6_kfild"]
+[ext_resource type="Texture2D" uid="uid://cbypx4f2jke5w" path="res://Images/Options Button New.png" id="7_jlah0"]
 [ext_resource type="PackedScene" uid="uid://cvyfsfu760j68" path="res://Scenes/ShopPanel.tscn" id="7_ore62"]
+[ext_resource type="Texture2D" uid="uid://bcq7l1mhi1se5" path="res://Images/Shop Button New.png" id="8_3gh3r"]
 [ext_resource type="Texture2D" uid="uid://8xkxdtr232pe" path="res://Images/Button Shop.png" id="8_fb21k"]
+[ext_resource type="Texture2D" uid="uid://dvkggxjmp4tmf" path="res://Images/Options Button New Pressed.png" id="8_llyua"]
 [ext_resource type="Script" path="res://Scripts/Name.gd" id="8_qowsi"]
 [ext_resource type="Texture2D" uid="uid://caguxpk8on44f" path="res://Images/Small Button.png" id="9_ie77h"]
+[ext_resource type="Texture2D" uid="uid://d2mlthgvelhwf" path="res://Images/Shop Button New pressed.png" id="9_r0ala"]
 [ext_resource type="Texture2D" uid="uid://du5fcnpgfv8sx" path="res://Images/Small Button Highlighted.png" id="10_yvajw"]
+[ext_resource type="Texture2D" uid="uid://cunivp3qqxm82" path="res://Images/Leadeboard Button.png" id="11_g7g6x"]
+[ext_resource type="Texture2D" uid="uid://b87ipkmddt64n" path="res://Images/Leadeboard Button Pressed.png" id="12_7q8lg"]
 [ext_resource type="Script" path="res://Scripts/Leaderboard.gd" id="12_l4nl1"]
 [ext_resource type="Texture2D" uid="uid://pd0wmnrpmqlu" path="res://Images/Rectangle 13.png" id="13_lwclu"]
-[ext_resource type="Texture2D" uid="uid://bto4wgm1s81ak" path="res://Images/Leaderboard Button.png" id="13_rdxcl"]
 [ext_resource type="Texture2D" uid="uid://c33hsap4v6x2i" path="res://Images/Button Shop Filled.png" id="14_m56f4"]
 [ext_resource type="Texture2D" uid="uid://w6kesi4sf85q" path="res://Images/Button Shop Filled Highlighted.png" id="15_h37hx"]
 
@@ -79,7 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lpnd8")
+texture = ExtResource("2_571sl")
 
 [node name="ColorRect" type="ColorRect" parent="Panel"]
 layout_mode = 1
@@ -139,39 +144,33 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center] Booster Points: "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Button Container" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = -447.0
-offset_right = 416.0
+offset_left = -250.0
+offset_top = -763.0
+offset_right = 250.0
+offset_bottom = -163.0
+grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Start" type="Button" parent="VBoxContainer"]
-visible = false
+[node name="NewGame Button" type="TextureButton" parent="Button Container"]
 layout_mode = 2
-text = "Start"
-icon = ExtResource("3_7xcpu")
-
-[node name="Options" type="Button" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Options"
-
-[node name="Quit" type="Button" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Quit"
-
-[node name="NewGame Button" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_7xcpu")
-texture_pressed = ExtResource("4_yf0eu")
+offset_left = -3.0
+offset_top = -34.0
+offset_right = 497.0
+offset_bottom = 126.45
+size_flags_vertical = 3
+texture_normal = ExtResource("5_n201s")
+texture_pressed = ExtResource("6_kfild")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/NewGame Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Button Container/NewGame Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -191,13 +190,26 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]New Game[/center]"
 
-[node name="Options Button" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_7xcpu")
-texture_pressed = ExtResource("4_yf0eu")
-stretch_mode = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="Button Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 138.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Options Button"]
+[node name="Options Button" type="TextureButton" parent="Button Container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("7_jlah0")
+texture_pressed = ExtResource("8_llyua")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button Container/VBoxContainer/Options Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -217,13 +229,15 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Options[/center]"
 
-[node name="Shop" type="TextureButton" parent="VBoxContainer"]
+[node name="Shop" type="TextureButton" parent="Button Container/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_7xcpu")
-texture_pressed = ExtResource("4_yf0eu")
-stretch_mode = 0
+size_flags_vertical = 3
+texture_normal = ExtResource("8_3gh3r")
+texture_pressed = ExtResource("9_r0ala")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Shop"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Button Container/VBoxContainer/Shop"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -242,6 +256,14 @@ theme_override_fonts/normal_font = SubResource("FontVariation_1nx73")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Shop[/center]"
+
+[node name="Leaderboard Button" type="TextureButton" parent="Button Container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("11_g7g6x")
+texture_pressed = ExtResource("12_7q8lg")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Buy Shield" type="Button" parent="."]
 layout_mode = 1
@@ -295,23 +317,6 @@ offset_bottom = -402.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Buy Boosters"
-
-[node name="Leaderboard Button" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -175.0
-offset_top = -254.0
-offset_right = -52.0
-offset_bottom = -129.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("13_rdxcl")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="Name Panel" type="Panel" parent="." node_paths=PackedStringArray("nametext")]
 layout_mode = 1
@@ -474,13 +479,12 @@ custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/NewGame Button" to="." method="start_button_pressed"]
-[connection signal="button_down" from="VBoxContainer/Options Button" to="Shop" method="theconnection"]
-[connection signal="pressed" from="VBoxContainer/Shop" to="Shop" method="OpenShopPanel"]
+[connection signal="pressed" from="Button Container/NewGame Button" to="." method="start_button_pressed"]
+[connection signal="button_down" from="Button Container/VBoxContainer/Options Button" to="Shop" method="theconnection"]
+[connection signal="pressed" from="Button Container/VBoxContainer/Shop" to="Shop" method="OpenShopPanel"]
+[connection signal="pressed" from="Button Container/VBoxContainer/Leaderboard Button" to="Leaderboard Panel" method="Open_Leaderboard"]
 [connection signal="button_down" from="Buy Shield" to="Shop" method="Buy_Shield"]
 [connection signal="pressed" from="Buy Points" to="Shop" method="Buy_Points"]
 [connection signal="pressed" from="Buy Boosters" to="Shop" method="Buy_Boosters"]
-[connection signal="pressed" from="Leaderboard Button" to="Leaderboard Panel" method="Open_Leaderboard"]
 [connection signal="pressed" from="Name Panel/Submit Button" to="Name Panel" method="Submit_Name"]
 [connection signal="pressed" from="Leaderboard Panel/LeaderboardBackground/Close Button" to="Leaderboard Panel" method="Close_Leaderboard"]
