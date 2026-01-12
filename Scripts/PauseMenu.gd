@@ -1,8 +1,9 @@
 extends Node
 
-var gameManager
+#var gameManager
 @export var musicstream : TextureProgressBar
 @export var sfxstream : TextureProgressBar
+@export var gameManager : Node2D
 
 signal submusic(volume : float)
 signal addmusic(volume : float)
@@ -10,7 +11,7 @@ signal subsfx(volume : float)
 signal addsfx(volume : float)
 
 func _ready() -> void:
-	gameManager = get_node("../")
+	#gameManager = get_node("../")
 	hide_subMenu()
 	init_volume()
 	

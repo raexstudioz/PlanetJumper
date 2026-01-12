@@ -3,6 +3,7 @@ extends Node2D
 @export var falling_object_scene : PackedScene 
 @export var timer : Timer
 @export var GameOverScreen : Control
+@export var PauseMenu : Control
 var gap_percentage = 10
 
 var planet_count = 0
@@ -21,6 +22,7 @@ var game_is_over = false
 func _ready():
 	var timer = get_node("Timer")
 	timer.timeout.connect(_on_Timer_timeout)
+	get_tree().paused = false #if restarting and the game is still paused
 	#spawn_Planet() #------ Needed for Spawing the Planets -----#
 	
 func _on_Timer_timeout():
@@ -50,7 +52,7 @@ func add_point():
 func Use_Boosters():
 	if(GlobalVariables.Boosters == 0):
 		print("Not Enough Boosters To use!!")
-		$PauseMenu.show_pauseMenu("NotEnoughCoins")
+		PauseMenu.show_pauseMenu("NotEnoughCoins")
 		return
 	
 	print("Boosters USED!!")

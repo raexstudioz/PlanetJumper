@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cvyfsfu760j68"]
 
-[ext_resource type="Texture2D" uid="uid://pd0wmnrpmqlu" path="res://Images/Rectangle 13.png" id="1_7r4a4"]
 [ext_resource type="Script" path="res://Scripts/Shop_Caller.gd" id="1_yqlg1"]
+[ext_resource type="Texture2D" uid="uid://dmfsdmsly45ey" path="res://Images/Shop Menu New.png" id="2_0y8n8"]
 [ext_resource type="Texture2D" uid="uid://cc6sxpoy4gma8" path="res://Images/Group 1.png" id="2_vat11"]
 [ext_resource type="FontFile" uid="uid://xmpx3ananbw8" path="res://Fonts/Meteoric-light.otf" id="3_cktph"]
 [ext_resource type="Texture2D" uid="uid://c33hsap4v6x2i" path="res://Images/Button Shop Filled.png" id="5_1p48f"]
@@ -41,9 +41,10 @@ offset_right = 326.5
 offset_bottom = 448.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7r4a4")
+texture = ExtResource("2_0y8n8")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -73,28 +74,18 @@ theme_override_fonts/normal_font = SubResource("FontVariation_p4nte")
 bbcode_enabled = true
 text = "[center]Shop Menu[/center]"
 
-[node name="Buy Shield Background" type="TextureRect" parent="TextureRect"]
+[node name="Buy Points" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 60.0
-offset_right = 612.0
-offset_bottom = 224.0
-mouse_filter = 2
-texture = ExtResource("5_i7vvi")
-expand_mode = 1
-
-[node name="Buy Shield2" type="TextureButton" parent="TextureRect/Buy Shield Background"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 103.0
-offset_right = 529.0
-offset_bottom = 185.0
+offset_left = 631.0
+offset_top = 843.5
+offset_right = 827.0
+offset_bottom = 925.5
 texture_normal = ExtResource("5_1p48f")
 texture_pressed = ExtResource("6_fgemk")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/Buy Shield Background/Buy Shield2"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/Buy Points"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,6 +104,79 @@ theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
 theme_override_font_sizes/normal_font_size = 23
 bbcode_enabled = true
 text = "[center]300 PTS[/center]"
+
+[node name="Buy Booster" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 633.0
+offset_top = 594.5
+offset_right = 829.0
+offset_bottom = 676.5
+texture_normal = ExtResource("5_1p48f")
+texture_pressed = ExtResource("6_fgemk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/Buy Booster"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -32.0
+offset_right = 80.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[center]300 PTS[/center]"
+
+[node name="Buy Shield2" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 337.5
+offset_right = 818.0
+offset_bottom = 419.5
+texture_normal = ExtResource("5_1p48f")
+texture_pressed = ExtResource("6_fgemk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/Buy Shield2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -32.0
+offset_right = 80.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[center]300 PTS[/center]"
+
+[node name="Buy Shield Background" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 58.0
+offset_top = 60.0
+offset_right = 612.0
+offset_bottom = 224.0
+mouse_filter = 2
+texture = ExtResource("5_i7vvi")
+expand_mode = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect/Buy Shield Background"]
 layout_mode = 1
@@ -164,6 +228,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Buy Booster Background" type="TextureRect" parent="TextureRect"]
+visible = false
 layout_mode = 0
 offset_left = 58.0
 offset_top = 258.0
@@ -172,37 +237,6 @@ offset_bottom = 422.0
 mouse_filter = 2
 texture = ExtResource("5_i7vvi")
 expand_mode = 1
-
-[node name="Buy Shield2" type="TextureButton" parent="TextureRect/Buy Booster Background"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 103.0
-offset_right = 529.0
-offset_bottom = 185.0
-texture_normal = ExtResource("5_1p48f")
-texture_pressed = ExtResource("6_fgemk")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/Buy Booster Background/Buy Shield2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -32.0
-offset_right = 80.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
-theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
-theme_override_font_sizes/normal_font_size = 23
-bbcode_enabled = true
-text = "[center]300 PTS[/center]"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect/Buy Booster Background"]
 layout_mode = 1
@@ -254,6 +288,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Buy Points Background" type="TextureRect" parent="TextureRect"]
+visible = false
 layout_mode = 0
 offset_left = 56.0
 offset_top = 458.0
@@ -262,37 +297,6 @@ offset_bottom = 622.0
 mouse_filter = 2
 texture = ExtResource("5_i7vvi")
 expand_mode = 1
-
-[node name="Buy Shield2" type="TextureButton" parent="TextureRect/Buy Points Background"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 103.0
-offset_right = 529.0
-offset_bottom = 185.0
-texture_normal = ExtResource("5_1p48f")
-texture_pressed = ExtResource("6_fgemk")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/Buy Points Background/Buy Shield2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -32.0
-offset_right = 80.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
-theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
-theme_override_font_sizes/normal_font_size = 23
-bbcode_enabled = true
-text = "[center]300 PTS[/center]"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect/Buy Points Background"]
 layout_mode = 1
@@ -351,9 +355,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -169.0
-offset_top = -114.0
+offset_top = -183.5
 offset_right = 172.0
-offset_bottom = -34.0
+offset_bottom = -103.5
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("5_1p48f")
@@ -381,7 +385,7 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Close Shop[/center]"
 
-[connection signal="button_down" from="TextureRect/Buy Shield Background/Buy Shield2" to="." method="buy_shield"]
-[connection signal="button_down" from="TextureRect/Buy Booster Background/Buy Shield2" to="." method="buy_booster"]
-[connection signal="button_down" from="TextureRect/Buy Points Background/Buy Shield2" to="." method="buy_points"]
+[connection signal="button_down" from="TextureRect/Buy Points" to="." method="buy_points"]
+[connection signal="button_down" from="TextureRect/Buy Booster" to="." method="buy_booster"]
+[connection signal="button_down" from="TextureRect/Buy Shield2" to="." method="buy_shield"]
 [connection signal="button_down" from="TextureRect/Close Button" to="." method="closeShopButton"]

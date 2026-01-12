@@ -4,6 +4,7 @@ extends Control
 
 #========= Loading Data from files to GlobalData ========================
 func _ready():
+	get_tree().paused = false  #unpause when restarting game
 	SaveAndLoad.Load_PlayerData()
 	Refresh_Stored_Data()
 	SaveAndLoad.DataIsSaving.connect(Refresh_Stored_Data)

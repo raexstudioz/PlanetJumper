@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	
 	var left := cam.global_position.x - half.x + death_margin
 	var right := cam.global_position.x + half.x - death_margin
-	var top := cam.global_position.y - half.x + death_margin
+	var top := cam.global_position.y - half.y + death_margin
 	var bottom := cam.global_position.y + half.y - death_margin
 	
 	var pos := global_position

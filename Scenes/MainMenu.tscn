@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://btpmrtqurv82x"]
+[gd_scene load_steps=32 format=3 uid="uid://btpmrtqurv82x"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_pa3dl"]
 [ext_resource type="Texture2D" uid="uid://gw8visgetpmp" path="res://Images/Main Menu Background New.png" id="2_571sl"]
@@ -18,9 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://cunivp3qqxm82" path="res://Images/Leadeboard Button.png" id="11_g7g6x"]
 [ext_resource type="Texture2D" uid="uid://b87ipkmddt64n" path="res://Images/Leadeboard Button Pressed.png" id="12_7q8lg"]
 [ext_resource type="Script" path="res://Scripts/Leaderboard.gd" id="12_l4nl1"]
-[ext_resource type="Texture2D" uid="uid://pd0wmnrpmqlu" path="res://Images/Rectangle 13.png" id="13_lwclu"]
 [ext_resource type="Texture2D" uid="uid://c33hsap4v6x2i" path="res://Images/Button Shop Filled.png" id="14_m56f4"]
 [ext_resource type="Texture2D" uid="uid://w6kesi4sf85q" path="res://Images/Button Shop Filled Highlighted.png" id="15_h37hx"]
+[ext_resource type="Texture2D" uid="uid://bwo61r4h7jv4r" path="res://Images/Setting background Transparent Edited.png" id="19_bqe83"]
+[ext_resource type="Texture2D" uid="uid://di2gn6wxohh7w" path="res://Images/Separator Clean.png" id="22_u67nx"]
 
 [sub_resource type="FontVariation" id="FontVariation_kdxq1"]
 base_font = ExtResource("4_5e6j0")
@@ -159,6 +160,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="NewGame Button" type="TextureButton" parent="Button Container"]
+process_mode = 3
 layout_mode = 2
 offset_left = -3.0
 offset_top = -34.0
@@ -202,6 +204,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Options Button" type="TextureButton" parent="Button Container/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("7_jlah0")
@@ -230,6 +233,7 @@ bbcode_enabled = true
 text = "[center]Options[/center]"
 
 [node name="Shop" type="TextureButton" parent="Button Container/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("8_3gh3r")
@@ -258,6 +262,7 @@ bbcode_enabled = true
 text = "[center]Shop[/center]"
 
 [node name="Leaderboard Button" type="TextureButton" parent="Button Container/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("11_g7g6x")
@@ -407,7 +412,7 @@ offset_right = 330.0
 offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("13_lwclu")
+texture = ExtResource("19_bqe83")
 
 [node name="NameLabel" type="RichTextLabel" parent="Leaderboard Panel/LeaderboardBackground"]
 custom_minimum_size = Vector2(200, 40)
@@ -415,16 +420,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_top = 12.0
-offset_right = 100.0
-offset_bottom = 52.0
+offset_left = -198.5
+offset_top = 120.0
+offset_right = 165.5
+offset_bottom = 168.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_58w2b")
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[center]Leaderboard[/center]"
 
@@ -435,10 +440,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -169.0
-offset_top = -114.0
-offset_right = 172.0
-offset_bottom = -34.0
+offset_left = -166.0
+offset_top = -176.0
+offset_right = 175.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("14_m56f4")
@@ -466,13 +471,23 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Close[/center]"
 
+[node name="Separator" type="TextureRect" parent="Leaderboard Panel/LeaderboardBackground"]
+layout_mode = 0
+offset_left = -39.5
+offset_top = 148.0
+offset_right = 960.5
+offset_bottom = 214.0
+texture = ExtResource("22_u67nx")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Leaderboard Panel"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
-offset_left = 276.0
-offset_top = 733.0
-offset_right = 808.0
-offset_bottom = 1142.0
+offset_left = 204.0
+offset_top = 606.0
+offset_right = 855.0
+offset_bottom = 1295.0
 
 [node name="LeaderboardList" type="VBoxContainer" parent="Leaderboard Panel/ScrollContainer"]
 custom_minimum_size = Vector2(400, 40)
