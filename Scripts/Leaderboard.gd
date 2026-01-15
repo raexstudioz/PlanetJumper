@@ -2,6 +2,7 @@
 extends Control
 
 var firebase_url = "https://planetjumper-8af2b-default-rtdb.firebaseio.com/highscores.json"
+@export var leaderboard_list : Control
 
 func _ready() -> void:
 	get_highest_score()
@@ -44,7 +45,8 @@ func _on_high_score_fetched(result: int, response_code: int, headers: Array, bod
 func _sort_by_score_desc(a, b) -> bool:
 	return int(a["score"]) > int(b["score"])  # True = a comes before b
 
-@onready var leaderboard_list = $ScrollContainer/LeaderboardList
+#@onready var leaderboard_list = $ScrollContainer/LeaderboardList
+
 var row_scene = preload("res://Scenes/LeaderboardRow.tscn")  # adjust path if needed
 
 func populate_leaderboard(players: Array):

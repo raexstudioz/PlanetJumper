@@ -389,7 +389,7 @@ theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Submit[/center]"
 
-[node name="Leaderboard Panel" type="Panel" parent="."]
+[node name="Leaderboard Panel" type="Panel" parent="." node_paths=PackedStringArray("leaderboard_list")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -398,6 +398,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_l4nl1")
+leaderboard_list = NodePath("LeaderboardBackground/ScrollContainer/LeaderboardList")
 
 [node name="LeaderboardBackground" type="TextureRect" parent="Leaderboard Panel"]
 layout_mode = 1
@@ -481,15 +482,63 @@ texture = ExtResource("22_u67nx")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Leaderboard Panel"]
+[node name="Separator2" type="TextureRect" parent="Leaderboard Panel/LeaderboardBackground"]
+layout_mode = 0
+offset_left = -39.5
+offset_top = 213.0
+offset_right = 960.5
+offset_bottom = 279.0
+texture = ExtResource("22_u67nx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rank Label" type="RichTextLabel" parent="Leaderboard Panel/LeaderboardBackground"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -431.0
+offset_top = 187.0
+offset_right = -67.0
+offset_bottom = 235.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_58w2b")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Name[/center]"
+
+[node name="Score Label" type="RichTextLabel" parent="Leaderboard Panel/LeaderboardBackground"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 187.0
+offset_right = 259.0
+offset_bottom = 235.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_58w2b")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Score[/center]"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Leaderboard Panel/LeaderboardBackground"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 0
-offset_left = 204.0
-offset_top = 606.0
-offset_right = 855.0
-offset_bottom = 1295.0
+offset_left = 136.5
+offset_top = 257.0
+offset_right = 787.5
+offset_bottom = 888.0
 
-[node name="LeaderboardList" type="VBoxContainer" parent="Leaderboard Panel/ScrollContainer"]
+[node name="LeaderboardList" type="VBoxContainer" parent="Leaderboard Panel/LeaderboardBackground/ScrollContainer"]
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 alignment = 1
