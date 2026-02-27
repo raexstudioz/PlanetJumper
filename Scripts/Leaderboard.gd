@@ -12,6 +12,7 @@ func get_highest_score():
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
 	print("URL: ", url)
+	print("Printing from get highest score!!")
 	http_request.request(url)
 	http_request.request_completed.connect(_on_high_score_fetched)
 
@@ -41,6 +42,27 @@ func _on_high_score_fetched(result: int, response_code: int, headers: Array, bod
 		print("Error fetching high scores: ", response_code)
 		
 	
+var uniqueID = OS.get_unique_id()
+#================================================================================================
+#Function to updatge the player's score in Firebase
+func update_high_score(new_score: int):
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	
+	var json_data = {
+		"score": new_score
+	}
+	var headers = ["Content-Type: application/json"]
+	var player_url = firebase_url.replace("<uniqueID>",uniqueID)
+	http_request.request(player_url,headers,HTTPClient.METHOD_PATCH,JSON.stringify(json_data))
+	
+	http_request.request_completed.connect(_on_score_updated)
+
+func _on_score_updated(result: int, response_code: int, headers: Array, body: PackedByteArray):
+	if(response_code==200):
+		print("Player Score Updated!!")
+	else:
+		print("Error updating player's score: " , response_code)
 
 func _sort_by_score_desc(a, b) -> bool:
 	return int(a["score"]) > int(b["score"])  # True = a comes before b

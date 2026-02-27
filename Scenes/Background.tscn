@@ -17,7 +17,7 @@ position = Vector2(1075, 0)
 texture = ExtResource("1_73avt")
 
 [node name="Background5" type="Sprite2D" parent="Background1"]
-position = Vector2(-1081, 0)
+position = Vector2(-1075, 1)
 texture = ExtResource("1_73avt")
 
 [node name="Background2" type="Sprite2D" parent="."]

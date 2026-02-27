@@ -357,7 +357,6 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="PauseMenu" parent="Node" node_paths=PackedStringArray("gameManager") instance=ExtResource("11_feymk")]
-visible = false
 z_index = 1
 gameManager = NodePath("../..")
 
