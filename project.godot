@@ -35,7 +35,7 @@ movie_writer/movie_file="C:/Users/mayur/Videos/Godot Videos/godot_output.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

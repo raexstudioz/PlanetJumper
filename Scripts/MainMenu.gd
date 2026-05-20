@@ -23,7 +23,7 @@ func Refresh_Stored_Data():
 		
 	if(SaveAndLoad.playerData.Boosters!=null):
 		print("The Booster: ", SaveAndLoad.playerData.Boosters)
-		GlobalVariables.Shield_Time = SaveAndLoad.playerData.Boosters
+		GlobalVariables.Boosters = SaveAndLoad.playerData.Boosters
 	else:
 		print("There is no any boosters!!")
 	$Panel/ColorRect/"Booster Points".text = str("Booster Points: ",GlobalVariables.Boosters)

@@ -18,12 +18,15 @@ func _ready() -> void:
 func show_pauseMenu(menuType : String):
 	get_node(".").visible = true
 	show_subMenu(menuType)
-	gameManager.pause_game()
+	print("Current scene name: " + get_tree().current_scene.name)
+	if(get_tree().current_scene.name == "Game"):
+		gameManager.pause_game()
 
 func hide_pauseMenu():
 	get_node(".").visible = false
 	hide_subMenu()
-	gameManager.pause_game()
+	if(get_tree().current_scene.name == "Game"):
+		gameManager.pause_game()
 
 func show_subMenu(menuType: String):
 	match menuType:

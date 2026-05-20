@@ -146,8 +146,16 @@ func activate_Shield():
 	shield.visible = true
 	var timer = $ShieldTimer
 	print("Shield Time::" , GlobalVariables.Shield_Time)
-	timer.wait_time = GlobalVariables.Shield_Time
+	timer.wait_time = 2#GlobalVariables.Shield_Time
 	print("Shield Timer: ", GlobalVariables.Shield_Time)
+	GlobalVariables.deduct_ShieldTime()
+	#New Code
+	#region
+	var type = SavingTypeList.new()
+	type.type_list["ShieldTime"] = true
+	SaveAndLoad.Save_PlayerData(type)
+	#region end
+	#New Code End
 	timer.start()
 	
 	

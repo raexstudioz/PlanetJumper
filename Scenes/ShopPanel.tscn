@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvyfsfu760j68"]
+[gd_scene load_steps=17 format=3 uid="uid://cvyfsfu760j68"]
 
 [ext_resource type="Script" path="res://Scripts/Shop_Caller.gd" id="1_yqlg1"]
 [ext_resource type="Texture2D" uid="uid://dmfsdmsly45ey" path="res://Images/Shop Menu New.png" id="2_0y8n8"]
@@ -10,10 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://duigeawc2ehe7" path="res://Images/Shield.png" id="8_vapl1"]
 [ext_resource type="Texture2D" uid="uid://cwdvb06qmqulm" path="res://Images/Boosted.png" id="9_aphmf"]
 [ext_resource type="Texture2D" uid="uid://bw2svjdjwqmw0" path="res://Images/Points.png" id="10_63xho"]
+[ext_resource type="Texture2D" uid="uid://dqkhqserxt6ic" path="res://Images/Notification Badge.png" id="11_udx6a"]
+[ext_resource type="Script" path="res://Scripts/BadgeUpdaterPoints.gd" id="12_avcbc"]
+[ext_resource type="Script" path="res://Scripts/BadgeUpdaterShield.gd" id="12_kger4"]
+[ext_resource type="Script" path="res://Scripts/BadgeUpdaterBooster.gd" id="13_bmbev"]
 
 [sub_resource type="FontVariation" id="FontVariation_p4nte"]
 base_font = ExtResource("3_cktph")
-variation_embolden = 1.36
+variation_embolden = 2.0
 
 [sub_resource type="FontVariation" id="FontVariation_21nfp"]
 base_font = ExtResource("3_cktph")
@@ -384,6 +388,99 @@ theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Close Shop[/center]"
+
+[node name="Notification Badge" type="TextureRect" parent="TextureRect" node_paths=PackedStringArray("PointsLabel")]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 312.5
+offset_right = 271.0
+offset_bottom = 359.5
+texture = ExtResource("11_udx6a")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("12_kger4")
+PointsLabel = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/Notification Badge"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -9.5
+offset_right = 41.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.237229, 0.927943, 0.818919, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_p4nte")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[node name="Notification Badge2" type="TextureRect" parent="TextureRect" node_paths=PackedStringArray("PointsLabel")]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 573.5
+offset_right = 267.0
+offset_bottom = 620.5
+texture = ExtResource("11_udx6a")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("13_bmbev")
+PointsLabel = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/Notification Badge2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -9.5
+offset_right = 41.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.237229, 0.927943, 0.818919, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_p4nte")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[node name="Notification Badge3" type="TextureRect" parent="TextureRect" node_paths=PackedStringArray("PointsLabel")]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 833.5
+offset_right = 278.0
+offset_bottom = 880.5
+texture = ExtResource("11_udx6a")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("12_avcbc")
+PointsLabel = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/Notification Badge3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -9.5
+offset_right = 41.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.237229, 0.927943, 0.818919, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_p4nte")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]1[/center]"
 
 [connection signal="button_down" from="TextureRect/Buy Points" to="." method="buy_points"]
 [connection signal="button_down" from="TextureRect/Buy Booster" to="." method="buy_booster"]

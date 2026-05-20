@@ -22,6 +22,7 @@ func Load_PlayerData():
 	GlobalVariables.Boosters = playerData.Boosters
 	GlobalVariables.SFXVolume = playerData.SFXVolume
 	GlobalVariables.MusicVolume = playerData.MusicVolume
+	GlobalVariables.Shield_Time = playerData.shieldTime
 	print("Points Loaded: ", playerData.points)
 	print("The SFX Volume: - ", playerData.SFXVolume)
 	print("The Music Volume: ", playerData.MusicVolume) 

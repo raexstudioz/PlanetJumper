@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://btpmrtqurv82x"]
+[gd_scene load_steps=34 format=3 uid="uid://btpmrtqurv82x"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_pa3dl"]
 [ext_resource type="Texture2D" uid="uid://gw8visgetpmp" path="res://Images/Main Menu Background New.png" id="2_571sl"]
@@ -19,9 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://b87ipkmddt64n" path="res://Images/Leadeboard Button Pressed.png" id="12_7q8lg"]
 [ext_resource type="Script" path="res://Scripts/Leaderboard.gd" id="12_l4nl1"]
 [ext_resource type="Texture2D" uid="uid://c33hsap4v6x2i" path="res://Images/Button Shop Filled.png" id="14_m56f4"]
+[ext_resource type="PackedScene" uid="uid://dmupes8gps0ij" path="res://Scenes/PauseMenu.tscn" id="14_opkee"]
 [ext_resource type="Texture2D" uid="uid://w6kesi4sf85q" path="res://Images/Button Shop Filled Highlighted.png" id="15_h37hx"]
 [ext_resource type="Texture2D" uid="uid://bwo61r4h7jv4r" path="res://Images/Setting background Transparent Edited.png" id="19_bqe83"]
 [ext_resource type="Texture2D" uid="uid://di2gn6wxohh7w" path="res://Images/Separator Clean.png" id="22_u67nx"]
+[ext_resource type="Script" path="res://Scripts/SoundManagerMainMenu.gd" id="24_qb2wi"]
 
 [sub_resource type="FontVariation" id="FontVariation_kdxq1"]
 base_font = ExtResource("4_5e6j0")
@@ -230,7 +232,6 @@ theme_override_colors/default_color = Color(0.909804, 0.654902, 0.337255, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_1nx73")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[center]Options[/center]"
 
 [node name="Shop" type="TextureButton" parent="Button Container/VBoxContainer"]
 process_mode = 3
@@ -259,7 +260,6 @@ theme_override_colors/default_color = Color(0.909804, 0.654902, 0.337255, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_1nx73")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[center]Shop[/center]"
 
 [node name="Leaderboard Button" type="TextureButton" parent="Button Container/VBoxContainer"]
 process_mode = 3
@@ -271,6 +271,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Buy Shield" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -290,6 +291,7 @@ script = ExtResource("2_exrl1")
 shopPanel = NodePath("../ShopPanel")
 
 [node name="Buy Points" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -309,6 +311,7 @@ visible = false
 layout_mode = 1
 
 [node name="Buy Boosters" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -543,8 +546,20 @@ custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 alignment = 1
 
+[node name="PauseMenu" parent="." instance=ExtResource("14_opkee")]
+visible = false
+layout_mode = 1
+
+[node name="SoundManager" type="Node2D" parent="." node_paths=PackedStringArray("PauseMenu")]
+script = ExtResource("24_qb2wi")
+PauseMenu = NodePath("../PauseMenu")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="SoundManager"]
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="SoundManager"]
+
 [connection signal="pressed" from="Button Container/NewGame Button" to="." method="start_button_pressed"]
-[connection signal="button_down" from="Button Container/VBoxContainer/Options Button" to="Shop" method="theconnection"]
+[connection signal="button_down" from="Button Container/VBoxContainer/Options Button" to="PauseMenu" method="show_pauseMenu" binds= ["SettingsMenu"]]
 [connection signal="pressed" from="Button Container/VBoxContainer/Shop" to="Shop" method="OpenShopPanel"]
 [connection signal="pressed" from="Button Container/VBoxContainer/Leaderboard Button" to="Leaderboard Panel" method="Open_Leaderboard"]
 [connection signal="button_down" from="Buy Shield" to="Shop" method="Buy_Shield"]
