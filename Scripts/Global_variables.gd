@@ -7,6 +7,7 @@ var ShieldCount : int
 var Boosters : int
 var SFXVolume : float
 var MusicVolume : float
+var LastPointsDate : String = ""
 
 func add_point():
 	globalpoints = 1 + globalpoints

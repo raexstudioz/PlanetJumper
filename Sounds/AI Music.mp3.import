@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bq1wm602qxwu7"
+path="res://.godot/imported/AI Music.mp3-96c6aae59af69e7ed807634f33b14334.mp3str"
+
+[deps]
+
+source_file="res://Sounds/AI Music.mp3"
+dest_files=["res://.godot/imported/AI Music.mp3-96c6aae59af69e7ed807634f33b14334.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -23,6 +23,7 @@ func Load_PlayerData():
 	GlobalVariables.SFXVolume = playerData.SFXVolume
 	GlobalVariables.MusicVolume = playerData.MusicVolume
 	GlobalVariables.Shield_Time = playerData.shieldTime
+	GlobalVariables.LastPointsDate = playerData.last_points_date
 	print("Points Loaded: ", playerData.points)
 	print("The SFX Volume: - ", playerData.SFXVolume)
 	print("The Music Volume: ", playerData.MusicVolume) 
@@ -46,7 +47,7 @@ func update(saveType: String):
 			playerData.change_highscore(GlobalVariables.HighScore)
 			print("Changing HighScore")
 		"ShieldTime":
-			playerData.change_shieldtime()
+			playerData.change_shieldtime(GlobalVariables.Shield_Time)
 			print("Changing ShieldTime!!")
 		"Boosters":
 			playerData.change_boosters(GlobalVariables.Boosters)
@@ -57,5 +58,8 @@ func update(saveType: String):
 		"SFXVolume":
 			playerData.change_Sfx(GlobalVariables.SFXVolume)
 			print("Sfx changed to : ", GlobalVariables.SFXVolume)
+		"LastPointsDate":
+			playerData.change_last_points_date(GlobalVariables.LastPointsDate)
+			print("Last points date saved: ", GlobalVariables.LastPointsDate)
 
 #=====================================================

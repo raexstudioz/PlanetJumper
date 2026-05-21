@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bdmppjpfodq7j"]
+[gd_scene load_steps=48 format=3 uid="uid://bdmppjpfodq7j"]
 
 [ext_resource type="PackedScene" uid="uid://btmmhcglgp64n" path="res://Scenes/Planet1.tscn" id="1_tx5vb"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_vpq13"]
@@ -44,7 +44,8 @@
 [ext_resource type="Texture2D" uid="uid://cbbh0wumaytm5" path="res://Images/Restart Button pressed.png" id="27_wcj7u"]
 [ext_resource type="Texture2D" uid="uid://enp3bcqo7fr4" path="res://Images/Horizontal Line.png" id="30_eia0k"]
 [ext_resource type="Script" path="res://Scripts/SoundManager.gd" id="31_h8i3w"]
-[ext_resource type="AudioStream" uid="uid://komkgwmhu0rv" path="res://Sounds/769916__mellotrix9898__bling.wav" id="32_g143s"]
+[ext_resource type="AudioStream" uid="uid://dekesypwg7asn" path="res://Sounds/pickupCoin.wav" id="45_nj4nm"]
+[ext_resource type="AudioStream" uid="uid://bq1wm602qxwu7" path="res://Sounds/AI Music.mp3" id="46_lis6m"]
 
 [sub_resource type="FontVariation" id="FontVariation_vwjje"]
 base_font = ExtResource("12_rhdys")
@@ -803,7 +804,8 @@ autostart = true
 
 [node name="SoundManager" type="Node2D" parent="." node_paths=PackedStringArray("GameManager", "PauseMenu")]
 script = ExtResource("31_h8i3w")
-Jump = ExtResource("32_g143s")
+Jump = ExtResource("45_nj4nm")
+BackgroundMusic = ExtResource("46_lis6m")
 GameManager = NodePath("..")
 PauseMenu = NodePath("../Node/PauseMenu")
 

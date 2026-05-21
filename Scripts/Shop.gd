@@ -32,10 +32,23 @@ func Buy_Shield():
 	SaveAndLoad.Save_PlayerData(type)
 	
 func Buy_Points():
+	var today = Time.get_date_string_from_system()
+	if GlobalVariables.LastPointsDate == today:
+		show_message("You already got your points for today.\nWait till tomorrow!")
+		return
+	GlobalVariables.LastPointsDate = today
 	GlobalVariables.add_custom_points(100)
 	var type = SavingTypeList.new()
 	type.type_list["Points"] = true
+	type.type_list["LastPointsDate"] = true
 	SaveAndLoad.Save_PlayerData(type)
+
+func show_message(text: String):
+	var dialog = AcceptDialog.new()
+	dialog.dialog_text = text
+	get_tree().root.add_child(dialog)
+	dialog.popup_centered()
+	dialog.confirmed.connect(dialog.queue_free)
 
 func Buy_Boosters():
 	if(GlobalVariables.globalpoints < Boosters_Price):
