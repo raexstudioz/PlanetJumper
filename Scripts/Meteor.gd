@@ -26,6 +26,7 @@ func _on_area_2d_body_entered(body):
 		if !body.shield_On:
 			spaceship.DeductLife()
 			gameManager.MeteorHit.emit()
+			Input.vibrate_handheld(250)
 			if camera:
 				camera.shake(0.4, 15, 12)
 			destroy_meteor()
