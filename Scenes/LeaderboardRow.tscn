@@ -7,14 +7,24 @@ base_font = ExtResource("1_vh5vo")
 variation_embolden = 1.36
 
 [node name="LeaderboardRow" type="HBoxContainer"]
-custom_minimum_size = Vector2(400, 40)
+custom_minimum_size = Vector2(650, 40)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -429.0
+offset_right = -430.0
 offset_bottom = -1808.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RankLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gjxjp")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]#[/center]"
 
 [node name="NameLabel" type="RichTextLabel" parent="."]
 layout_mode = 2

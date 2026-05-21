@@ -5,6 +5,7 @@ extends Node
 
 @export var Jump : AudioStream
 @export var BackgroundMusic : AudioStream
+@export var Explosion : AudioStream
 @export var GameManager : Node2D
 @export var PauseMenu : Control
 
@@ -18,7 +19,8 @@ func _ready():
 	sfx_player.volume_db = linear_to_db(sfx_volume)
 	if BackgroundMusic:
 		play_music(BackgroundMusic)
-	GameManager.connect("LandedOnPlanet",LandPlanetSound)
+	GameManager.connect("LandedOnPlanet", LandPlanetSound)
+	GameManager.connect("MeteorHit", play_explosion)
 	PauseMenu.connect("submusic",set_music_volume)
 	PauseMenu.connect("addmusic",set_music_volume)
 	PauseMenu.connect("subsfx",set_sfx_volume)
@@ -57,3 +59,7 @@ func set_sfx_volume(vol: float):
 	
 func LandPlanetSound():
 	play_sfx(Jump)
+
+func play_explosion():
+	if Explosion:
+		play_sfx(Explosion)

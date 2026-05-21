@@ -72,13 +72,15 @@ func _sort_by_score_desc(a, b) -> bool:
 var row_scene = preload("res://Scenes/LeaderboardRow.tscn")  # adjust path if needed
 
 func populate_leaderboard(players: Array):
-	#leaderboard_list.clear()  # remove old rows
+	for child in leaderboard_list.get_children():
+		child.queue_free()
 
-	for player in players:
-		print("Instantiating!!")
+	for i in range(players.size()):
+		var player = players[i]
 		var row = row_scene.instantiate()
-		row.get_node("NameLabel").text = player.get("name", "Unknown")
-		row.get_node("ScoreLabel").text = str(player.get("score", 0))
+		row.get_node("RankLabel").text = "[center]" + str(i + 1) + "[/center]"
+		row.get_node("NameLabel").text = "[center]" + player.get("name", "Unknown") + "[/center]"
+		row.get_node("ScoreLabel").text = "[center]" + str(player.get("score", 0)) + "[/center]"
 		leaderboard_list.add_child(row)
 		
 func Close_Leaderboard():

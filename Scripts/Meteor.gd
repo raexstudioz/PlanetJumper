@@ -5,9 +5,11 @@ var side = false
 var is_active = false
 var spaceship : Node2D
 var speed : float = 100
+var camera : Camera2D
 
 func _ready():
 	gameManager = get_node("../../")
+	camera = gameManager.get_node("Camera2D")
 	destroy_meteor()
 
 func _process(delta):
@@ -23,6 +25,9 @@ func _on_area_2d_body_entered(body):
 		spaceship = body
 		if !body.shield_On:
 			spaceship.DeductLife()
+			gameManager.MeteorHit.emit()
+			if camera:
+				camera.shake(0.4, 15, 12)
 			destroy_meteor()
 		else:
 			destroy_meteor()

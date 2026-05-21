@@ -1,6 +1,7 @@
 extends Control
 
 var firebase_url2 = "https://planetjumper-8af2b-default-rtdb.firebaseio.com/highscores/<uniqueID>.json"
+var firebase_all_scores_url = "https://planetjumper-8af2b-default-rtdb.firebaseio.com/highscores.json"
 var uniqueID
 
 #========= Loading Data from files to GlobalData ========================
@@ -11,6 +12,7 @@ func _ready():
 	Refresh_Stored_Data()
 	SaveAndLoad.DataIsSaving.connect(Refresh_Stored_Data)
 	fetch_my_score()
+	fetch_my_rank()
 
 func Refresh_Stored_Data():
 	$Panel/ColorRect/PointLabel.text = str("Points: ",GlobalVariables.globalpoints)
@@ -26,7 +28,7 @@ func Refresh_Stored_Data():
 		GlobalVariables.Boosters = SaveAndLoad.playerData.Boosters
 	else:
 		print("There is no any boosters!!")
-	$Panel/ColorRect/"Booster Points".text = str("Booster Points: ",GlobalVariables.Boosters)
+	$Panel/ColorRect/"Booster Points".text = "Rank: ..."
 	if(SaveAndLoad.playerData.MusicVolume==null):
 		GlobalVariables.MusicVolume = 1
 	else:
@@ -39,6 +41,41 @@ func Refresh_Stored_Data():
 		print("Global SFX Volume:-" , GlobalVariables.SFXVolume)
 
 	
+func fetch_my_rank():
+	var url = firebase_all_scores_url + "?orderBy=\"score\"&limitToLast=50"
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request(url)
+	http_request.request_completed.connect(_on_rank_fetched)
+
+func _on_rank_fetched(result: int, response_code: int, headers: Array, body: PackedByteArray):
+	if response_code != 200:
+		$Panel/ColorRect/"Booster Points".text = "Rank: N/A"
+		return
+	var parse_result = JSON.new().parse_string(body.get_string_from_utf8())
+	if not parse_result is Dictionary:
+		$Panel/ColorRect/"Booster Points".text = "Rank: N/A"
+		return
+
+	var players = []
+	for id in parse_result:
+		var data = parse_result[id].duplicate()
+		data["id"] = id
+		players.append(data)
+
+	players.sort_custom(func(a, b): return int(a.get("score", 0)) > int(b.get("score", 0)))
+
+	var rank = -1
+	for i in range(players.size()):
+		if players[i]["id"] == uniqueID:
+			rank = i + 1
+			break
+
+	if rank == -1:
+		$Panel/ColorRect/"Booster Points".text = "Rank: 50+"
+	else:
+		$Panel/ColorRect/"Booster Points".text = "Rank: #" + str(rank)
+
 func start_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	SaveAndLoad.DataIsSaving.disconnect(Refresh_Stored_Data)

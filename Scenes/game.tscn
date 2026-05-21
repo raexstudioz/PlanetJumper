@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bdmppjpfodq7j"]
+[gd_scene load_steps=49 format=3 uid="uid://bdmppjpfodq7j"]
 
 [ext_resource type="PackedScene" uid="uid://btmmhcglgp64n" path="res://Scenes/Planet1.tscn" id="1_tx5vb"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_vpq13"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" path="res://Scripts/SoundManager.gd" id="31_h8i3w"]
 [ext_resource type="AudioStream" uid="uid://dekesypwg7asn" path="res://Sounds/pickupCoin.wav" id="45_nj4nm"]
 [ext_resource type="AudioStream" uid="uid://bq1wm602qxwu7" path="res://Sounds/AI Music.mp3" id="46_lis6m"]
+[ext_resource type="AudioStream" uid="uid://pfpwhkth7mlr" path="res://Sounds/explosion.wav" id="47_tudrt"]
 
 [sub_resource type="FontVariation" id="FontVariation_vwjje"]
 base_font = ExtResource("12_rhdys")
@@ -67,6 +68,7 @@ position = Vector2(1, -4)
 script = ExtResource("4_hwsuy")
 
 [node name="Planet" parent="." instance=ExtResource("1_tx5vb")]
+visible = false
 position = Vector2(-849, 101)
 scale = Vector2(0.06, 0.06)
 
@@ -74,11 +76,12 @@ scale = Vector2(0.06, 0.06)
 visible = false
 position = Vector2(-538.99, -963.08)
 
-[node name="Earth" parent="." node_paths=PackedStringArray("explosion", "camera") instance=ExtResource("3_7ex4b")]
+[node name="Earth" parent="." node_paths=PackedStringArray("explosion", "camera", "sound_manager") instance=ExtResource("3_7ex4b")]
 position = Vector2(0, -4)
 scale = Vector2(0.1, 0.1)
 explosion = NodePath("CoolExplosion")
 camera = NodePath("../Camera2D")
+sound_manager = NodePath("../SoundManager")
 
 [node name="CoolExplosion" parent="Earth" instance=ExtResource("6_kqng0")]
 scale = Vector2(10, 10)
@@ -824,6 +827,7 @@ autostart = true
 script = ExtResource("31_h8i3w")
 Jump = ExtResource("45_nj4nm")
 BackgroundMusic = ExtResource("46_lis6m")
+Explosion = ExtResource("47_tudrt")
 GameManager = NodePath("..")
 PauseMenu = NodePath("../Node/PauseMenu")
 

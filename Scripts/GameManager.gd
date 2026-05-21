@@ -83,6 +83,7 @@ signal EnteredPlayArea
 signal ExitPlayArea
 signal LandedOnPlanet
 signal DeductLife
+signal MeteorHit
 #============================
 func DeductTheLife():
 	DeductLife.emit()
