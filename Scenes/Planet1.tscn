@@ -34,7 +34,7 @@ shader_parameter/color_9 = Color(0.98, 0.57, 0.47, 1)
 shader_parameter/color_10 = Color(0.79, 0.48, 0.43, 1)
 
 [node name="Planet" type="Area2D" node_paths=PackedStringArray("thePlanet")]
-scale = Vector2(0.075, 0.075)
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_xriq0")
 thePlanet = NodePath("Planet")
 

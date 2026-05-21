@@ -4,6 +4,7 @@ var gameManager : Node2D
 var side = false
 var is_active = false
 var spaceship : Node2D
+var speed : float = 100
 
 func _ready():
 	gameManager = get_node("../../")
@@ -13,9 +14,9 @@ func _process(delta):
 	if(gameManager.game_is_over): return
 	
 	if(side==false):
-		position.x -= 100 * delta
+		position.x -= speed * delta
 	else:
-		position.x += 100 * delta
+		position.x += speed * delta
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("spaceships"):

@@ -79,3 +79,6 @@ func _on_spawn_timeout():
 	spawn_planet()  # Spawn a new planet
 	spawn_timer.set_wait_time(randf_range(1.0, 3.0))  # Set next random delay (1 to 3 seconds)
 	spawn_timer.start()  # Restart the timer
+
+func set_spawn_probabilities(probs: Array):
+	spawn_probabilities = probs

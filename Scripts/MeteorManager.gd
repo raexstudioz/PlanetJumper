@@ -11,6 +11,8 @@ var timer : Timer
 var min_meteor_Timer : float = 10
 var max_meteor_Timer : float = 20
 var meteorSpawned : bool
+var spawn_count : int = 1
+var meteor_speed : float = 100
 
 func _ready():
 	gameManager = get_node("../")
@@ -31,9 +33,15 @@ func _on_Timer_timeout():
 	
 func spawn_meteor():
 	print("Spawning Meteor!!---------------------")
-	var meteor = get_meteor()
-	if(!meteor): return
-	meteor.initialize()
+	for i in range(spawn_count):
+		var meteor = get_meteor()
+		if(!meteor): return
+		meteor.initialize()
+
+func set_meteor_speed(new_speed: float):
+	meteor_speed = new_speed
+	for meteor in meteorPool:
+		meteor.speed = new_speed
 
 #region Meteor Pooling
 #================= Meteor pooling========================

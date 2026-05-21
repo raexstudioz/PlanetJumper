@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Get-ChildItem -Path \"G:\\\\Company\\\\Projects\\\\PlanetJumperGit\\\\PlanetJumper\" -Recurse -Force | Select-Object -Property FullName | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"G:\\\\Company\\\\Projects\\\\PlanetJumperGit\\\\PlanetJumper\"\\), \".\" } | Sort-Object)"
+      "PowerShell(Get-ChildItem -Path \"G:\\\\Company\\\\Projects\\\\PlanetJumperGit\\\\PlanetJumper\" -Recurse -Force | Select-Object -Property FullName | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"G:\\\\Company\\\\Projects\\\\PlanetJumperGit\\\\PlanetJumper\"\\), \".\" } | Sort-Object)",
+      "Bash(findstr /s /i /n \"set_speed\\\\|Go_Next\\\\|difficulty\\\\|rotation_speed\\\\|downward\\\\|d_speed\\\\|r_speed\\\\|settingSpeed\\\\|spawn_probabilities\\\\|meteor_speed\\\\|spawn_count\" *.gd Scripts\\\\*.gd Scripts\\\\StateMachine\\\\*.gd Scenes\\\\*.gd Resources\\\\*.gd)",
+      "Bash(cd /d \"G:\\\\Company\\\\Projects\\\\PlanetJumperGit\\\\PlanetJumper\")",
+      "Bash(findstr /s /i /n \"set_speed\" Scripts\\\\GameManager.gd Scripts\\\\PlanetClass.gd Scripts\\\\BackgroundMover.gd Scripts\\\\StateMachine\\\\State.gd Scripts\\\\StateMachine\\\\StateMachine.gd)"
     ]
   }
 }

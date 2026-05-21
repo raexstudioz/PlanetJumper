@@ -1,40 +1,70 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy3iuosil1ovk"]
+[gd_scene load_steps=10 format=3 uid="uid://c03v0xcr5igc4"]
 
 [ext_resource type="Script" path="res://Scripts/Planet.gd" id="1_bqdem"]
-[ext_resource type="Texture2D" uid="uid://bqnfh0rqpcpot" path="res://Images/PlanetArt2.png" id="2_v8vmq"]
+[ext_resource type="Texture2D" uid="uid://c6m51p6qofuv4" path="res://Images/PlanetArt.png" id="2_xfb83"]
 [ext_resource type="Script" path="res://Scripts/PlanetArea.gd" id="3_yqeex"]
 [ext_resource type="Texture2D" uid="uid://cupbvjf5oav7t" path="res://Images/spaceship.jpg" id="4_ugk2b"]
+[ext_resource type="PackedScene" uid="uid://o40717x7bf34" path="res://Scripts/Procedural Generation/planetshader/planetshader.tscn" id="5_7w6sr"]
+[ext_resource type="Shader" uid="uid://c2haucnw8wkt8" path="res://Scripts/Procedural Generation/planetshader/planetshader_shadercode.tres" id="6_hacla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6x5n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxmdv"]
 radius = 584.94
 
-[node name="Planet" type="Area2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhhob"]
+resource_local_to_scene = true
+shader = ExtResource("6_hacla")
+shader_parameter/heighest_landmass = 0.335
+shader_parameter/lowest_landmass = 0.19
+shader_parameter/landmass = 1.69
+shader_parameter/density = 5.0
+shader_parameter/seed = 1337.0
+shader_parameter/iResolution = Vector2(64, 64)
+shader_parameter/uni_radius = 0.5
+shader_parameter/color_1 = Color(0.81705, 0.647162, 0.400172, 1)
+shader_parameter/color_2 = Color(0.914072, 0.761618, 0.606634, 1)
+shader_parameter/color_3 = Color(0.99773, 0.696713, 0.646766, 1)
+shader_parameter/color_4 = Color(0.903094, 0.504561, 0.392146, 1)
+shader_parameter/color_5 = Color(0.996404, 0.819639, 0.855819, 1)
+shader_parameter/color_6 = Color(1, 0.746228, 0.762942, 1)
+shader_parameter/color_7 = Color(0.99, 0.83, 0.59, 1)
+shader_parameter/color_8 = Color(0.98, 0.71, 0.49, 1)
+shader_parameter/color_9 = Color(0.98, 0.57, 0.47, 1)
+shader_parameter/color_10 = Color(0.79, 0.48, 0.43, 1)
+
+[node name="Planet" type="Area2D" node_paths=PackedStringArray("thePlanet")]
 scale = Vector2(0.075, 0.075)
 script = ExtResource("1_bqdem")
+thePlanet = NodePath("Planet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(85.66, 85.66)
 shape = SubResource("CircleShape2D_s6x5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.595, 0.595)
-texture = ExtResource("2_v8vmq")
+visible = false
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("2_xfb83")
 
 [node name="Spacesp" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-1.81899e-12, -1546.67)
+position = Vector2(1.52589e-05, -1233.33)
 scale = Vector2(0.59058, 0.59058)
 texture = ExtResource("4_ugk2b")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("spacesp")]
-scale = Vector2(2, 2)
+scale = Vector2(1.465, 1.465)
 script = ExtResource("3_yqeex")
 spacesp = NodePath("../Spacesp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_oxmdv")
+
+[node name="Planet" parent="." instance=ExtResource("5_7w6sr")]
+material = SubResource("ShaderMaterial_nhhob")
+position = Vector2(0, 0)
+scale = Vector2(6.7, 6.7)
 
 [connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

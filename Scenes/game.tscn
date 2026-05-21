@@ -123,7 +123,7 @@ offset_right = 368.0
 offset_bottom = 186.0
 color = Color(1, 1, 1, 0)
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameHUD/Timer" node_paths=PackedStringArray("game_manager", "FirebaseManager", "StateManager")]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Node/GameHUD/Timer" node_paths=PackedStringArray("game_manager", "FirebaseManager")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -145,7 +145,6 @@ text = "Score: 0"
 script = ExtResource("8_ngh32")
 game_manager = NodePath("../../../..")
 FirebaseManager = NodePath("../../../../FirebaseManager")
-StateManager = NodePath("../../../../StateManager")
 
 [node name="Points" type="ColorRect" parent="Node/GameHUD"]
 layout_mode = 1
@@ -607,11 +606,13 @@ SettingsButton = NodePath("../Node/GameHUD/SettingsButton")
 [node name="FirebaseManager" type="Node2D" parent="."]
 script = ExtResource("13_djwbg")
 
-[node name="StateManager" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateManager" type="Node2D" parent="." node_paths=PackedStringArray("initial_state", "GameManager")]
 script = ExtResource("14_0jcd5")
 initial_state = NodePath("Difficulty1")
+GameManager = NodePath("..")
+difficulty_interval = 10.0
 
-[node name="Difficulty1" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager")]
+[node name="Difficulty1" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("15_1hgr0")
 next_state = "Difficulty2"
 gameManager = NodePath("../..")
@@ -620,45 +621,61 @@ d_speed = 100
 MeteorManager = NodePath("../../MeteorManager")
 min_meteor_Timer = 10.0
 max_meteor_Timer = 20.0
+PlanetManager = NodePath("../../PlanetManager")
 
-[node name="Difficulty2" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager")]
+[node name="Difficulty2" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("16_nucjy")
 next_state = "Difficulty3"
 gameManager = NodePath("../..")
-r_speed = 105
-d_speed = 150
+r_speed = 120
+d_speed = 120
 MeteorManager = NodePath("../../MeteorManager")
 min_meteor_Timer = 8.0
-max_meteor_Timer = 18.0
+max_meteor_Timer = 16.0
+PlanetManager = NodePath("../../PlanetManager")
+spawn_probabilities = Array[float]([0.7, 0.3, 0.0])
+meteor_speed = 130.0
 
-[node name="Difficulty3" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager")]
+[node name="Difficulty3" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("17_pqtlj")
 next_state = "Difficulty4"
 gameManager = NodePath("../..")
-r_speed = 110
-d_speed = 200
+r_speed = 140
+d_speed = 140
 MeteorManager = NodePath("../../MeteorManager")
 min_meteor_Timer = 6.0
-max_meteor_Timer = 16.0
+max_meteor_Timer = 12.0
+PlanetManager = NodePath("../../PlanetManager")
+spawn_probabilities = Array[float]([0.5, 0.3, 0.2])
+meteor_speed = 160.0
+meteor_spawn_count = 2
 
-[node name="Difficulty4" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager")]
+[node name="Difficulty4" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("18_gtcsy")
 next_state = "Difficulty5"
 gameManager = NodePath("../..")
-r_speed = 115
-d_speed = 250
-MeteorManager = NodePath("../../MeteorManager")
-min_meteor_Timer = 4.0
-max_meteor_Timer = 14.0
-
-[node name="Difficulty5" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager")]
-script = ExtResource("19_iwv6a")
-gameManager = NodePath("../..")
-r_speed = 120
-d_speed = 300
+r_speed = 160
+d_speed = 160
 MeteorManager = NodePath("../../MeteorManager")
 min_meteor_Timer = 5.0
-max_meteor_Timer = 12.0
+max_meteor_Timer = 10.0
+PlanetManager = NodePath("../../PlanetManager")
+spawn_probabilities = Array[float]([0.3, 0.3, 0.4])
+meteor_speed = 200.0
+meteor_spawn_count = 2
+
+[node name="Difficulty5" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
+script = ExtResource("19_iwv6a")
+gameManager = NodePath("../..")
+r_speed = 180
+d_speed = 180
+MeteorManager = NodePath("../../MeteorManager")
+min_meteor_Timer = 4.0
+max_meteor_Timer = 8.0
+PlanetManager = NodePath("../../PlanetManager")
+spawn_probabilities = Array[float]([0.2, 0.2, 0.6])
+meteor_speed = 300.0
+meteor_spawn_count = 3
 
 [node name="PlanetManager" type="Node2D" parent="." node_paths=PackedStringArray("game_Manager")]
 position = Vector2(-1080, -1080)

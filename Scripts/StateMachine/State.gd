@@ -10,13 +10,22 @@ signal Transitioned
 @export var MeteorManager : Node2D
 @export var min_meteor_Timer : float
 @export var max_meteor_Timer : float
+@export var PlanetManager : Node2D
+@export var spawn_probabilities : Array[float] = [1.0, 0.0, 0.0]
+@export var meteor_speed : float = 100
+@export var meteor_spawn_count : int = 1
 
 
 func Enter():
-	gameManager.set_speed(r_speed,d_speed)
+	print("Entered:------->",self.name)
+	gameManager.set_speed(r_speed, d_speed)
 	MeteorManager.min_meteor_Timer = min_meteor_Timer
 	MeteorManager.max_meteor_Timer = max_meteor_Timer
 	MeteorManager.change_meteor_timer()
+	MeteorManager.set_meteor_speed(meteor_speed)
+	MeteorManager.spawn_count = meteor_spawn_count
+	if PlanetManager:
+		PlanetManager.set_spawn_probabilities(spawn_probabilities)
 	pass
 
 	

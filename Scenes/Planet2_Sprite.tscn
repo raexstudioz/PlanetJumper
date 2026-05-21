@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy3iuosil1ovk"]
+
+[ext_resource type="Script" path="res://Scripts/Planet.gd" id="1_cep1o"]
+[ext_resource type="Texture2D" uid="uid://bqnfh0rqpcpot" path="res://Images/PlanetArt2.png" id="2_2hwt4"]
+[ext_resource type="Texture2D" uid="uid://cupbvjf5oav7t" path="res://Images/spaceship.jpg" id="3_5jsds"]
+[ext_resource type="Script" path="res://Scripts/PlanetArea.gd" id="4_lxlsm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6x5n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxmdv"]
+radius = 584.94
+
+[node name="Planet" type="Area2D"]
+scale = Vector2(0.075, 0.075)
+script = ExtResource("1_cep1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(85.66, 85.66)
+shape = SubResource("CircleShape2D_s6x5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.595, 0.595)
+texture = ExtResource("2_2hwt4")
+
+[node name="Spacesp" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.81899e-12, -1546.67)
+scale = Vector2(0.59058, 0.59058)
+texture = ExtResource("3_5jsds")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("spacesp")]
+scale = Vector2(2, 2)
+script = ExtResource("4_lxlsm")
+spacesp = NodePath("../Spacesp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_oxmdv")
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
