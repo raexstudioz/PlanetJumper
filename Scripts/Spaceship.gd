@@ -51,16 +51,20 @@ func _process(delta: float) -> void:
 	var cam:= get_viewport().get_camera_2d()
 	var screen_size := get_viewport_rect().size
 	var half := screen_size / 2.0
-	
+
 	var left := cam.global_position.x - half.x + death_margin
 	var right := cam.global_position.x + half.x - death_margin
 	var top := cam.global_position.y - half.y + death_margin
 	var bottom := cam.global_position.y + half.y - death_margin
-	
+
 	var pos := global_position
-	
-	if pos.x <= left or pos.x> right or pos.y <= top or pos.y >=bottom:
-		trigger_game_over()
+
+	if on_planet:
+		if pos.y >= bottom:
+			trigger_game_over()
+	else:
+		if pos.x <= left or pos.x > right or pos.y <= top or pos.y >= bottom:
+			trigger_game_over()
 		
 func trigger_game_over():
 	dead = true

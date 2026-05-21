@@ -192,7 +192,6 @@ theme_override_colors/default_color = Color(0.909804, 0.654902, 0.337255, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_1nx73")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "[center]New Game[/center]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Button Container"]
 layout_mode = 1

@@ -76,6 +76,7 @@ position = Vector2(-538.99, -963.08)
 
 [node name="Earth" parent="." node_paths=PackedStringArray("explosion", "camera") instance=ExtResource("3_7ex4b")]
 position = Vector2(0, -4)
+scale = Vector2(0.1, 0.1)
 explosion = NodePath("CoolExplosion")
 camera = NodePath("../Camera2D")
 
@@ -88,8 +89,8 @@ scale = Vector2(10, 10)
 lifetime = 0.6
 
 [node name="TheSpaceship" parent="Earth" groups=["spaceships"] instance=ExtResource("2_wh45f")]
-position = Vector2(0, -1525)
-scale = Vector2(33.3333, 33.3333)
+position = Vector2(0, -1220)
+scale = Vector2(18, 18)
 script = ExtResource("2_anbfd")
 
 [node name="ShieldTimer" type="Timer" parent="Earth/TheSpaceship"]

@@ -34,7 +34,7 @@ shader_parameter/color_9 = Color(0.98, 0.57, 0.47, 1)
 shader_parameter/color_10 = Color(0.79, 0.48, 0.43, 1)
 
 [node name="Planet" type="Area2D" node_paths=PackedStringArray("thePlanet")]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.12, 0.12)
 script = ExtResource("1_xriq0")
 thePlanet = NodePath("Planet")
 
@@ -49,7 +49,7 @@ texture = ExtResource("2_1ymmx")
 
 [node name="Spacesp" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(1.52589e-05, -1233.33)
+position = Vector2(0, -1158.33)
 scale = Vector2(0.59058, 0.59058)
 texture = ExtResource("4_bamrl")
 
