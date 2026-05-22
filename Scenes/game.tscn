@@ -629,6 +629,8 @@ max_meteor_Timer = 16.0
 PlanetManager = NodePath("../../PlanetManager")
 spawn_probabilities = Array[float]([0.7, 0.3, 0.0])
 meteor_speed = 130.0
+min_spawn_interval = 3.8
+max_spawn_interval = 4.8
 
 [node name="Difficulty3" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("17_pqtlj")
@@ -643,6 +645,8 @@ PlanetManager = NodePath("../../PlanetManager")
 spawn_probabilities = Array[float]([0.5, 0.3, 0.2])
 meteor_speed = 160.0
 meteor_spawn_count = 2
+min_spawn_interval = 3.6
+max_spawn_interval = 4.6
 
 [node name="Difficulty4" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("18_gtcsy")
@@ -657,6 +661,8 @@ PlanetManager = NodePath("../../PlanetManager")
 spawn_probabilities = Array[float]([0.3, 0.3, 0.4])
 meteor_speed = 200.0
 meteor_spawn_count = 2
+min_spawn_interval = 3.4
+max_spawn_interval = 4.7
 
 [node name="Difficulty5" type="Node2D" parent="StateManager" node_paths=PackedStringArray("gameManager", "MeteorManager", "PlanetManager")]
 script = ExtResource("19_iwv6a")
@@ -670,6 +676,7 @@ PlanetManager = NodePath("../../PlanetManager")
 spawn_probabilities = Array[float]([0.2, 0.2, 0.6])
 meteor_speed = 300.0
 meteor_spawn_count = 3
+min_spawn_interval = 3.3
 
 [node name="PlanetManager" type="Node2D" parent="." node_paths=PackedStringArray("game_Manager")]
 position = Vector2(-1080, -1080)

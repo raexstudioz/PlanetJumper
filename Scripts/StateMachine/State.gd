@@ -14,6 +14,8 @@ signal Transitioned
 @export var spawn_probabilities : Array[float] = [1.0, 0.0, 0.0]
 @export var meteor_speed : float = 100
 @export var meteor_spawn_count : int = 1
+@export var min_spawn_interval : float = 4.0
+@export var max_spawn_interval : float = 5.0
 
 
 func Enter():
@@ -26,6 +28,7 @@ func Enter():
 	MeteorManager.spawn_count = meteor_spawn_count
 	if PlanetManager:
 		PlanetManager.set_spawn_probabilities(spawn_probabilities)
+		PlanetManager.set_spawn_interval(min_spawn_interval, max_spawn_interval)
 	pass
 
 	
