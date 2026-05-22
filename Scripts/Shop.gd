@@ -45,10 +45,16 @@ func Buy_Points():
 	SaveAndLoad.Save_PlayerData(type)
 
 func show_warning():
-	if warningPanel:
-		warningPanel.visible = true
-		await get_tree().create_timer(2.5).timeout
-		warningPanel.visible = false
+	if !warningPanel: return
+	warningPanel.modulate.a = 0.0
+	warningPanel.visible = true
+
+	var tween = create_tween()
+	tween.tween_property(warningPanel, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(2.0)
+	tween.tween_property(warningPanel, "modulate:a", 0.0, 0.3)
+	await tween.finished
+	warningPanel.visible = false
 
 func Buy_Boosters():
 	if(GlobalVariables.globalpoints < Boosters_Price):

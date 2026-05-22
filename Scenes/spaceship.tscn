@@ -79,6 +79,7 @@ rotation = -1.5708
 script = ExtResource("1_7cjmu")
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
+width = 2.0
 default_color = Color(0.47451, 1, 0.85098, 1)
 
 [node name="RayCast2D" type="RayCast2D" parent="Node2D"]
