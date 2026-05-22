@@ -96,9 +96,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
+offset_left = -75.0
 offset_top = -32.0
-offset_right = 80.0
+offset_right = 85.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -107,7 +107,7 @@ theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
 theme_override_font_sizes/normal_font_size = 23
 bbcode_enabled = true
-text = "[center]300 PTS[/center]"
+text = "[center]50 PTS[/center]"
 
 [node name="Buy Booster" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
@@ -138,7 +138,7 @@ theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
 theme_override_font_sizes/normal_font_size = 23
 bbcode_enabled = true
-text = "[center]300 PTS[/center]"
+text = "[center]10 PTS[/center]"
 
 [node name="Buy Shield2" type="TextureButton" parent="TextureRect"]
 layout_mode = 0
@@ -169,7 +169,7 @@ theme_override_colors/default_color = Color(0.47451, 0.988235, 0.929412, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_21nfp")
 theme_override_font_sizes/normal_font_size = 23
 bbcode_enabled = true
-text = "[center]300 PTS[/center]"
+text = "[center]10 PTS[/center]"
 
 [node name="Buy Shield Background" type="TextureRect" parent="TextureRect"]
 visible = false

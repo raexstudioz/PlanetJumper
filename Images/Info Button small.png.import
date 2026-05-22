@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfkjdnvqqbs6j"
-path="res://.godot/imported/Main Menu Background Teal Color.png-1a986a61bf52ce86958f9effa6a7843e.ctex"
+uid="uid://cbs44tgbfwrb8"
+path="res://.godot/imported/Info Button small.png-2aac0284f3bd0e9088e7e6dfba8e5168.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Main Menu Background Teal Color.png"
-dest_files=["res://.godot/imported/Main Menu Background Teal Color.png-1a986a61bf52ce86958f9effa6a7843e.ctex"]
+source_file="res://Images/Info Button small.png"
+dest_files=["res://.godot/imported/Info Button small.png-2aac0284f3bd0e9088e7e6dfba8e5168.ctex"]
 
 [params]
 

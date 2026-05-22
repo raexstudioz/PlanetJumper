@@ -13,6 +13,19 @@ func _ready():
 	SaveAndLoad.DataIsSaving.connect(Refresh_Stored_Data)
 	fetch_my_score()
 	fetch_my_rank()
+	$"About Panel".visible = false
+	$Panel/"Info Button".pressed.connect(open_about_panel)
+	$"About Panel".gui_input.connect(_on_about_panel_input)
+
+func open_about_panel():
+	$"About Panel".visible = true
+
+func close_about_panel():
+	$"About Panel".visible = false
+
+func _on_about_panel_input(event: InputEvent):
+	if event is InputEventMouseButton and event.pressed:
+		close_about_panel()
 
 func Refresh_Stored_Data():
 	$Panel/ColorRect/PointLabel.text = str("Points: ",GlobalVariables.globalpoints)

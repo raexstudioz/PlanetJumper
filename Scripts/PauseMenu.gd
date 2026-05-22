@@ -33,6 +33,7 @@ func show_subMenu(menuType: String):
 		"NotEnoughCoins":
 			$"Not Enough Coins".visible = true
 		"SettingsMenu":
+			init_volume()
 			$"Settings Menu".visible = true
 	pass
 	

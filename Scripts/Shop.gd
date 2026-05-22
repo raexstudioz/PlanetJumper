@@ -2,6 +2,7 @@ extends Node2D
 var Shield_Price : int = 10
 var Boosters_Price : int = 10
 @export var shopPanel : Control
+@export var warningPanel : TextureRect
 var shopcaller : Node2D
 
 func _ready():
@@ -34,21 +35,20 @@ func Buy_Shield():
 func Buy_Points():
 	var today = Time.get_date_string_from_system()
 	if GlobalVariables.LastPointsDate == today:
-		show_message("You already got your points for today.\nWait till tomorrow!")
+		show_warning()
 		return
 	GlobalVariables.LastPointsDate = today
-	GlobalVariables.add_custom_points(100)
+	GlobalVariables.add_custom_points(50)
 	var type = SavingTypeList.new()
 	type.type_list["Points"] = true
 	type.type_list["LastPointsDate"] = true
 	SaveAndLoad.Save_PlayerData(type)
 
-func show_message(text: String):
-	var dialog = AcceptDialog.new()
-	dialog.dialog_text = text
-	get_tree().root.add_child(dialog)
-	dialog.popup_centered()
-	dialog.confirmed.connect(dialog.queue_free)
+func show_warning():
+	if warningPanel:
+		warningPanel.visible = true
+		await get_tree().create_timer(2.5).timeout
+		warningPanel.visible = false
 
 func Buy_Boosters():
 	if(GlobalVariables.globalpoints < Boosters_Price):

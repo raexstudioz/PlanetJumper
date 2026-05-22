@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf6iqg3knegiv"
-path="res://.godot/imported/Main Menu Background.png-6c4c3e18c1de1757f8daf3dc19289f98.ctex"
+uid="uid://b0j1tus5s7nom"
+path="res://.godot/imported/Info Button small highlighted.png-48ac214ecbd6840e63ad191c7bfa3643.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Main Menu Background.png"
-dest_files=["res://.godot/imported/Main Menu Background.png-6c4c3e18c1de1757f8daf3dc19289f98.ctex"]
+source_file="res://Images/Info Button small highlighted.png"
+dest_files=["res://.godot/imported/Info Button small highlighted.png-48ac214ecbd6840e63ad191c7bfa3643.ctex"]
 
 [params]
 
