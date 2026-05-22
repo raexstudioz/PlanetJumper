@@ -195,42 +195,8 @@ texture = ExtResource("23_t6mud")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ActivateShieldButton" type="Button" parent="Node/GameHUD" groups=["ui"]]
-layout_mode = 0
-offset_left = 873.0
-offset_top = 1583.0
-offset_right = 881.0
-offset_bottom = 1591.0
-focus_mode = 0
-text = "Activate Shield"
-
-[node name="Settings" type="Button" parent="Node/GameHUD" groups=["ui"]]
-layout_mode = 0
-offset_left = 617.0
-offset_top = 1583.0
-offset_right = 739.0
-offset_bottom = 1614.0
-focus_mode = 0
-text = "Settings
-"
-
-[node name="Booster" type="Button" parent="Node/GameHUD" groups=["ui"]]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -409.0
-offset_top = -340.0
-offset_right = -340.0
-offset_bottom = -309.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 0
-text = "Booster"
-
 [node name="LaunchButton" type="TextureButton" parent="Node/GameHUD"]
+modulate = Color(1, 1, 1, 0.670588)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -834,9 +800,6 @@ PauseMenu = NodePath("../Node/PauseMenu")
 
 [connection signal="child_exiting_tree" from="Earth" to="Earth" method="on_spaceship_exit"]
 [connection signal="timeout" from="Earth/TheSpaceship/ShieldTimer" to="Earth/TheSpaceship" method="deactivate_Shield"]
-[connection signal="button_down" from="Node/GameHUD/Booster" to="." method="UIClick"]
-[connection signal="button_up" from="Node/GameHUD/Booster" to="." method="UIUnclick"]
-[connection signal="pressed" from="Node/GameHUD/Booster" to="." method="Use_Boosters"]
 [connection signal="pressed" from="Node/GameHUD/LaunchButton" to="." method="LeaveThePlanet"]
 [connection signal="pressed" from="Node/GameHUD/BoosterButton" to="." method="Use_Boosters"]
 [connection signal="pressed" from="Node/GameOverScreen/Panel/Control/Restart Button" to="." method="RestartGame"]
