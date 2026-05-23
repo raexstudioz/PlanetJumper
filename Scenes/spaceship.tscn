@@ -75,6 +75,7 @@ texture = ExtResource("1_phei1")
 shape = SubResource("CapsuleShape2D_oabbq")
 
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -17)
 rotation = -1.5708
 script = ExtResource("1_7cjmu")
 

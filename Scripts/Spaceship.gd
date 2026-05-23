@@ -13,7 +13,7 @@ var original_speed = 200
 var Boost_Speed = 900
 var gameManager
 var gameOver = false
-var Life : int = 2
+var Life : int = 3
 
 func _ready():
 	current_planet = get_node(".").get_parent()
@@ -169,12 +169,11 @@ func deactivate_Shield():
 	
 #==================LIFE======================================
 func DeductLife():
+	Life -= 1
 	print("Deducted Life!!:--", Life)
 	gameManager.DeductTheLife()
-	if Life == 1:
+	if Life <= 0:
 		gameManager.GameOver()
-	elif Life > 1 :
-		Life = Life - 1
 		
 #================JETFUEL====================================
 signal startJetFuel
